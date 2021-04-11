@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from listings.models import Band
+
+
+class BandAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+
+admin.site.register(Band, BandAdmin)
