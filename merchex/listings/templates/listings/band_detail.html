@@ -1,0 +1,18 @@
+{% extends 'listings/base.html' %}
+
+{% block content %}
+
+  <h1>{{ band.name }}</h1>
+
+  <ul>
+    <li>Genre: {{ band.get_genre_display }}</li>
+    <li>Year formed: {{ band.year_formed }}</li>
+    <li>Active: {{ band.active|yesno }}</li>
+    {% if band.official_homepage %}
+      <li><a href="{{ band.official_homepage }}">{{ band.official_homepage }}</a></li>
+    {% endif %}
+  </ul>
+
+  <p>{{ band.biography }}</p>
+
+{% endblock %}
