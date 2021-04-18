@@ -38,7 +38,13 @@ def about(request):
 
 
 def contact(request):
-    form = ContactUsForm()
+    if request.method == 'POST':
+        # create an instance of our form, and fill it with the POST data
+        form = ContactUsForm(request.POST)
+    else:
+        # this must be a GET request, so create an empty form
+        form = ContactUsForm()
+
     return render(request,
                   'listings/contact.html',
                   {'form': form})
