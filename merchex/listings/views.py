@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from listings.models import Band, Listing
+from listings.forms import ContactUsForm
 
 
 def band_list(request):
@@ -37,4 +38,7 @@ def about(request):
 
 
 def contact(request):
-    return render(request, 'listings/contact.html')
+    form = ContactUsForm()
+    return render(request,
+                  'listings/contact.html',
+                  {'form': form})
