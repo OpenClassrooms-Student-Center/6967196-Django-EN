@@ -29,4 +29,5 @@ urlpatterns = [
 
     path('about-us/', views.about),
     path('contact-us/', views.contact),
+    path('email-sent/', views.email_sent),
 ]

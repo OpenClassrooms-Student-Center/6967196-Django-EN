@@ -1,5 +1,5 @@
 from django.core.mail import send_mail
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from listings.models import Band, Listing
@@ -50,6 +50,7 @@ def contact(request):
                 from_email=form.cleaned_data['email'],
                 recipient_list=['admin@merchex.xyz'],
             )
+            return HttpResponseRedirect('/email-sent/')
         # if the form is not valid, we let execution continue to the return
         # statement below, and display the form again (with errors).
 
@@ -60,3 +61,6 @@ def contact(request):
     return render(request,
                   'listings/contact.html',
                   {'form': form})
+
+def email_sent(request):
+    return render(request, 'listings/email_sent.html')
