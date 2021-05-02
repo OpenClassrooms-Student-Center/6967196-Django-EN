@@ -20,6 +20,10 @@ def band_detail(request, id):
                   {'band': band})
 
 
+def band_create(request):
+    return render(request, 'listings/band_create.html')
+
+
 def listing_list(request):
     listings = Listing.objects.all()
     return render(request,
