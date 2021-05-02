@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 from listings.models import Band, Listing
-from listings.forms import ContactUsForm
+from listings.forms import BandForm, ContactUsForm
 
 
 def band_list(request):
@@ -21,7 +21,10 @@ def band_detail(request, id):
 
 
 def band_create(request):
-    return render(request, 'listings/band_create.html')
+    form = BandForm()
+    return render(request,
+                  'listings/band_create.html',
+                  {'form': form})
 
 
 def listing_list(request):
