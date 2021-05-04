@@ -4,6 +4,8 @@
 
   <h1>Bands</h1>
 
+  <a href="{% url 'band-create' %}">Create new Band</a>
+
   <ul>
     {% for band in bands %}
       <li><a href="{% url 'band-detail' band.id %}">{{ band.name }}</a></li>
