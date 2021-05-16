@@ -56,7 +56,10 @@ def band_update(request, id):
 
 
 def band_delete(request, id):
-    return render(request, 'listings/band_delete.html')
+    band = Band.objects.get(id=id)
+    return render(request,
+                  'listings/band_delete.html',
+                  {'band': band})
 
 
 def listing_list(request):
