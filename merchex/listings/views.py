@@ -39,7 +39,17 @@ def band_create(request):
 
 def band_update(request, id):
     band = Band.objects.get(id=id)
-    form = BandForm(instance=band)  # prepopulate the form with an existing band
+
+    if request.method == 'POST':
+        form = BandForm(request.POST, instance=band)
+        if form.is_valid():
+            # update the existing `Band` in the database
+            form.save()
+            # redirect to the detail page of the `Band` we just updated
+            return HttpResponseRedirect(reverse('band-detail', kwargs={'id': band.id}))
+    else:
+        form = BandForm(instance=band)
+
     return render(request,
                   'listings/band_update.html',
                   {'form': form})
