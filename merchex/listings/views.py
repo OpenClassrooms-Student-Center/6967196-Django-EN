@@ -56,7 +56,16 @@ def band_update(request, id):
 
 
 def band_delete(request, id):
-    band = Band.objects.get(id=id)
+    band = Band.objects.get(id=id)  # we need this for both GET and POST
+
+    if request.method == 'POST':
+        # delete the band from the database
+        band.delete()
+        # redirect to the bands list
+        return HttpResponseRedirect(reverse('band-list'))
+
+    # no need for an `else` here. If it's a GET request, just continue
+
     return render(request,
                   'listings/band_delete.html',
                   {'band': band})
