@@ -1,0 +1,30 @@
+<html>
+  <head><title>Merchex</title></head>
+  <body>
+    
+    <h1>Hello Django!</h1>
+
+    <p>My favourite bands are:</p>
+
+    <ul>
+      {% for band in bands %}
+        <li>{{ band.name }}</li>
+      {% endfor %}
+    </ul>
+
+    <p>I have {{ bands|length }} favourite bands.</p>
+
+    <p>
+      I have
+        {% if bands|length < 5 %}
+          a few
+        {% elif bands|length < 10 %}
+          some
+        {% else %}
+          many
+        {% endif %}
+      favourite bands.
+    </p>
+
+  </body>
+</html>
