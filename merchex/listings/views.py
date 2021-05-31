@@ -4,10 +4,10 @@ from django.shortcuts import render
 from listings.models import Band, Listing
 
 
-def hello(request):
+def band_list(request):
     bands = Band.objects.all()
     return render(request,
-                  'listings/hello.html',
+                  'listings/band_list.html',
                   {'bands': bands})
 
 
