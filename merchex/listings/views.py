@@ -1,6 +1,7 @@
 from django.core.mail import send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 
 from listings.models import Band, Listing
 from listings.forms import BandForm, ContactUsForm
@@ -27,7 +28,7 @@ def band_create(request):
             # create a new `Band` and save it to the db
             band = form.save()
             # redirect to the detail page of the band we just created
-            return HttpResponseRedirect(f'/bands/{band.id}/')
+            return HttpResponseRedirect(reverse('band-detail', kwargs={'id': band.id}))
     else:
         form = BandForm()
 
