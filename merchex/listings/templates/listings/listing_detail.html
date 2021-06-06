@@ -13,7 +13,7 @@
   <p>{{ listing.description }}</p>
 
   <a href="{% url 'listing-update' band.id %}">Edit this Listing</a>
-
+  <a href="{% url 'listing-delete' listing.id %}">Delete listing</a>
   <a href="{% url 'listing-list' %}">Back to all Listings</a>
 
 {% endblock %}
