@@ -40,3 +40,4 @@ class Listing(models.Model):
                     MaxValueValidator(2021)]
     )
     type = models.fields.CharField(choices=ListingType.choices, max_length=5)
+    band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
