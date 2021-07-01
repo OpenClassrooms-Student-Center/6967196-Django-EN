@@ -54,6 +54,10 @@ def band_update(request, id):
                   {'form': form})
 
 
+def band_delete(request, id):
+    return render(request, 'listings/band_delete.html')
+
+
 def listing_list(request):
     listings = Listing.objects.all()
     return render(request,
